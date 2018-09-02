@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="一、拿到一个面试题，你第一时间看到的是什么？ 考点二、又如何看待网上搜出来的永远看不完的题海？ 不变应万变三、如何对待接下来遇到的问题？ 题目到知识再到题目  实际题目 1、JS中使用typeof能得到的哪些类型 考点：JS变量类型     知识点：  值类型以数值传递，互不影响 引用类型对象、数组、函数    实际传递的是指针（内存地址）   解答：五种形式：undefined、string、n">
+<meta name="description" content="面试的题目1、手动编写一个按键按下，不依赖第三方库  2、跨域的几种实现方式   考察的知识点1: XMLHttpRequestajax 的核心 API XMLHTTPRequest1234567891011var xhr = new XMLHttpRequest(); //创建xhr对象xhr.open(&amp;apos;GET&amp;apos;,&amp;apos;/api&amp;apos;,false);xhr.on">
 <meta name="keywords" content="面试题,杂谈">
 <meta property="og:type" content="article">
-<meta property="og:title" content="(1)变量类型和计算">
-<meta property="og:url" content="https://hydesmond.github.io/desmond.github.io/2018/07/19/(1)变量类型和计算/index.html">
+<meta property="og:title" content="（8）ajax">
+<meta property="og:url" content="https://hydesmond.github.io/desmond.github.io/2018/07/27/(8)ajax/index.html">
 <meta property="og:site_name" content="Desmond">
-<meta property="og:description" content="一、拿到一个面试题，你第一时间看到的是什么？ 考点二、又如何看待网上搜出来的永远看不完的题海？ 不变应万变三、如何对待接下来遇到的问题？ 题目到知识再到题目  实际题目 1、JS中使用typeof能得到的哪些类型 考点：JS变量类型     知识点：  值类型以数值传递，互不影响 引用类型对象、数组、函数    实际传递的是指针（内存地址）   解答：五种形式：undefined、string、n">
+<meta property="og:description" content="面试的题目1、手动编写一个按键按下，不依赖第三方库  2、跨域的几种实现方式   考察的知识点1: XMLHttpRequestajax 的核心 API XMLHTTPRequest1234567891011var xhr = new XMLHttpRequest(); //创建xhr对象xhr.open(&amp;apos;GET&amp;apos;,&amp;apos;/api&amp;apos;,false);xhr.on">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-02T01:28:57.511Z">
+<meta property="og:updated_time" content="2018-09-02T02:11:06.858Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="(1)变量类型和计算">
-<meta name="twitter:description" content="一、拿到一个面试题，你第一时间看到的是什么？ 考点二、又如何看待网上搜出来的永远看不完的题海？ 不变应万变三、如何对待接下来遇到的问题？ 题目到知识再到题目  实际题目 1、JS中使用typeof能得到的哪些类型 考点：JS变量类型     知识点：  值类型以数值传递，互不影响 引用类型对象、数组、函数    实际传递的是指针（内存地址）   解答：五种形式：undefined、string、n">
+<meta name="twitter:title" content="（8）ajax">
+<meta name="twitter:description" content="面试的题目1、手动编写一个按键按下，不依赖第三方库  2、跨域的几种实现方式   考察的知识点1: XMLHttpRequestajax 的核心 API XMLHTTPRequest1234567891011var xhr = new XMLHttpRequest(); //创建xhr对象xhr.open(&amp;apos;GET&amp;apos;,&amp;apos;/api&amp;apos;,false);xhr.on">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://hydesmond.github.io/desmond.github.io/2018/07/19/(1)变量类型和计算/"/>
+  <link rel="canonical" href="https://hydesmond.github.io/desmond.github.io/2018/07/27/(8)ajax/"/>
 
 
 
 
 
-  <title>(1)变量类型和计算 | Desmond</title>
+  <title>（8）ajax | Desmond</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hydesmond.github.io/desmond.github.io/2018/07/19/(1)变量类型和计算/">
+    <link itemprop="mainEntityOfPage" href="https://hydesmond.github.io/desmond.github.io/2018/07/27/(8)ajax/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Desmond">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">(1)变量类型和计算</h1>
+          <h1 class="post-title" itemprop="name headline">（8）ajax</h1>
         
 
         <div class="post-meta">
@@ -272,8 +272,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-19T14:48:00+08:00">
-                2018-07-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-27T14:48:00+08:00">
+                2018-07-27
               </time>
             
 
@@ -310,154 +310,48 @@
       
 
       
-        <h2 id="一、拿到一个面试题，你第一时间看到的是什么？"><a href="#一、拿到一个面试题，你第一时间看到的是什么？" class="headerlink" title="一、拿到一个面试题，你第一时间看到的是什么？"></a>一、拿到一个面试题，你第一时间看到的是什么？</h2><ul>
-<li>考点<h2 id="二、又如何看待网上搜出来的永远看不完的题海？"><a href="#二、又如何看待网上搜出来的永远看不完的题海？" class="headerlink" title="二、又如何看待网上搜出来的永远看不完的题海？"></a>二、又如何看待网上搜出来的永远看不完的题海？</h2></li>
-<li>不变应万变<h2 id="三、如何对待接下来遇到的问题？"><a href="#三、如何对待接下来遇到的问题？" class="headerlink" title="三、如何对待接下来遇到的问题？"></a>三、如何对待接下来遇到的问题？</h2></li>
-<li>题目到知识再到题目</li>
+        <h1 id="面试的题目"><a href="#面试的题目" class="headerlink" title="面试的题目"></a>面试的题目</h1><p>1、手动编写一个按键按下，不依赖第三方库 </p>
+<p>2、跨域的几种实现方式  </p>
+<h1 id="考察的知识点"><a href="#考察的知识点" class="headerlink" title="考察的知识点"></a>考察的知识点</h1><h3 id="1-XMLHttpRequestajax-的核心-API"><a href="#1-XMLHttpRequestajax-的核心-API" class="headerlink" title="1: XMLHttpRequestajax 的核心 API"></a>1: XMLHttpRequestajax 的核心 API</h3><ul>
+<li>XMLHTTPRequest<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var xhr = new XMLHttpRequest(); //创建xhr对象</span><br><span class="line">xhr.open(&apos;GET&apos;,&apos;/api&apos;,false);</span><br><span class="line">xhr.onreadystatechange = function() &#123;</span><br><span class="line">    //这里的函数异步执行,可以参考之前js基础中的 异步模块</span><br><span class="line">    if (xhr.readyState == 4) &#123; //状态的变化</span><br><span class="line">        if (xhr.status == 200) &#123; //服务端返回的状态码</span><br><span class="line">            console.log(responseText) //服务端返回的内容</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.send(null)</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h3 id="实际题目"><a href="#实际题目" class="headerlink" title="实际题目"></a>实际题目</h3><ul>
-<li>1、JS中使用<code>typeof</code>能得到的哪些类型<blockquote>
-<p>考点：JS变量类型</p>
+<h3 id="2-状态码说明"><a href="#2-状态码说明" class="headerlink" title="2: 状态码说明"></a>2: 状态码说明</h3><ul>
+<li><p>readyState</p>
+<blockquote>
+<p>0 (未初始化) 还没有调用send() 方法<br>1 (载入) 已调用 send() 方法,正在发送请求<br>2 (载入完成) send() 方法执行完成,已经接受到全部响应内容<br>3 (交互) 正在解析响应内容<br>4 (完成) 响应内容解析完成,可以在客户端调用了  </p>
+</blockquote>
+</li>
+<li><p>status</p>
+<blockquote>
+<p>2xx - 成功处理请求。如200<br>3xx - 需要重定向，浏览器直接跳转(304除外)<br>4xx - 客户端请求错误，如404（地址错误）<br>5xx - 服务器端错误 </p>
 </blockquote>
 </li>
 </ul>
+<h3 id="3-跨域"><a href="#3-跨域" class="headerlink" title="3: 跨域"></a>3: 跨域</h3><p>在实际开发中，常常遇到跨域问题，在解决跨域问题之前，先了解一下什么是跨域。<br>只要符合以下三个条件之一，就是跨域</p>
 <blockquote>
-<p>知识点：</p>
+<p>协议不一致，如 <code>http</code> 与 <code>https</code><br>域名不一致，如 <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 与  <a href="http://www.caobike.com" target="_blank" rel="noopener">www.caobike.com</a><br>端口不一致， 如<a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 与 <a href="http://www.baidu.com：8080" target="_blank" rel="noopener">www.baidu.com：8080</a>  </p>
+</blockquote>
+<p>另外在HTML标签有三个比较特殊的标签，可以加载跨域资源，如下：</p>
+<blockquote>
+<p><code>&lt;img src=&quot;url&quot;&gt;</code><br><code>&lt;link href=&quot;url&quot;&gt;</code><br><code>&lt;script src=&quot;url&quot;&gt;</code></p>
+</blockquote>
+<p>三者一般于不同的情况</p>
 <ul>
-<li>值类型<br>以数值传递，互不影响</li>
-<li>引用类型<br>对象、数组、函数</li>
+<li><code>img</code>用于打点统计，统计网站可能是其他域</li>
+<li><code>link</code>和<code>script</code>可以用于CDN</li>
+<li><code>script</code>用于JSONP</li>
 </ul>
-</blockquote>
-<blockquote>
-<p>实际传递的是指针（内存地址）</p>
-</blockquote>
-<blockquote>
-<p>解答：五种形式：<code>undefined</code>、<code>string</code>、<code>number</code>、<code>object</code>（<code>null</code>是特殊的<code>object</code>）、<code>boolean</code>、<code>function</code>(实际上function也是特殊的object)</p>
-</blockquote>
+<p>根据以上介绍，常用的方法有jsonp及后端设置</p>
 <ul>
-<li>2、何时使用<code>====</code>以及何时<code>==</code><blockquote>
-<p>考点：强制类型转换</p>
-</blockquote>
+<li><p>jsonp<br>JSONP实现原理<br>加载<a href="http://coding.m.imooc.com/classindex.html，不一定服务器端真的有一个classindex.html文件，服务器可以根据请求动态生成一个文件来返回，同理于" target="_blank" rel="noopener">http://coding.m.imooc.com/classindex.html，不一定服务器端真的有一个classindex.html文件，服务器可以根据请求动态生成一个文件来返回，同理于</a>    <code>&lt;script src=&#39;http://coding.m.imooc.com/api.js&#39;&gt;</code></p>
+</li>
+<li><p>实现原理<br>假如你的网站要跨域访问慕课网的一个接口，慕课网给你一个地址<a href="http://coding.m.imooc.com/api.js，返回内容格式如callback" target="_blank" rel="noopener">http://coding.m.imooc.com/api.js，返回内容格式如callback</a>({x:100, y:200})（可动态生成）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">window.callback=function(data)&#123;</span><br><span class="line">//这是我们跨域得到的信息</span><br><span class="line">    console.log(data);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script src=&apos;http://coding.m.imooc.com/api.js&apos;&gt;&lt;/script&gt;</span><br><span class="line">&lt;!-- 以上将返回callback(&#123;x:100，y:200&#125;) --&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置http header<br>另外一个解决跨域的简单方法，需要服务器端来做，但是作为交互方，我们必须知道这个方法，是将来解决跨域问题的一个趋势</p>
 </li>
 </ul>
-<blockquote>
-<p>知识点：</p>
-<ul>
-<li>字符串拼接</li>
-</ul>
-</blockquote>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+new Array(017)//017 -&gt; 15 -&gt; NaN </span><br><span class="line">100 + &apos;10&apos;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p><code>==</code>运算符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">null==undefined//其他判断是否相等都用===</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><code>if</code>语句</li>
-<li>逻辑运算</li>
-</ul>
-<blockquote>
-<p>解答：</p>
-</blockquote>
-<ul>
-<li>3、JS中有哪些内置函数<blockquote>
-<p>考点：</p>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>知识点：</p>
-<ul>
-<li>Object</li>
-<li>Array</li>
-<li>Boolean</li>
-<li>Number</li>
-<li>String</li>
-<li>Function</li>
-<li>Date</li>
-<li>RegExp</li>
-<li>Error</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>解答：</p>
-</blockquote>
-<ul>
-<li>4、JS变量按照存储方式区分为哪些类型，并描述其特点<blockquote>
-<p>考点：JS变量类型</p>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>知识点：</p>
-<pre><code>- 值类型：将变量值储存在内存中（给变量赋值后，变量值不会改变）
-- 引用类型：变量指向一个指针（内存地址）
-</code></pre></blockquote>
-<blockquote>
-<p>解答：<br>    -例子<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 值类型</span><br><span class="line">var a = 100</span><br><span class="line">var b = a</span><br><span class="line">a = 200</span><br><span class="line">console.log(b) //100</span><br><span class="line"></span><br><span class="line">// 引用类型</span><br><span class="line">var a = &#123;age:20&#125;</span><br><span class="line">var b = a</span><br><span class="line">b.age = 21</span><br><span class="line">console.log(a.age) //21</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<ul>
-<li>如何理解<code>JSON</code><blockquote>
-<p>考点：</p>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>知识点：</p>
-</blockquote>
-<blockquote>
-<p>解答：<code>json</code>是<code>js</code>对象或数据格式</p>
-<ul>
-<li>对象<code>api</code><ul>
-<li>JSON.stringify()</li>
-<li>JSON.parse()</li>
-</ul>
-</li>
-<li><code>window.onload</code>和<code>DOMContentLoaded</code>的区别？<br>考点：浏览器渲染过程</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>知识点：</p>
-</blockquote>
-<blockquote>
-<p>解答：</p>
-</blockquote>
-<ul>
-<li>6、用js床架10个<code>&lt;a&gt;</code>标签，点击的时候弹出来对应的序号？<blockquote>
-<p>考点：作用域</p>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>知识点：</p>
-</blockquote>
-<blockquote>
-<p>解答：</p>
-</blockquote>
-<ul>
-<li>7、简述如何实现一个模块加载器，实现类似require.js的基本功能<blockquote>
-<p>考点：JS模块化</p>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>知识点：</p>
-</blockquote>
-<blockquote>
-<p>解答：</p>
-</blockquote>
-<ul>
-<li>8、实现数组的随机排序<blockquote>
-<p>考点：JS基础算法</p>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>知识点：</p>
-</blockquote>
-<blockquote>
-<p>解答：</p>
-</blockquote>
 
       
     </div>
@@ -490,8 +384,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/15/面试题/" rel="next" title="面试题之一">
-                <i class="fa fa-chevron-left"></i> 面试题之一
+              <a href="/2018/07/26/(7)监听委托/" rel="next" title="（6）监听委托">
+                <i class="fa fa-chevron-left"></i> （6）监听委托
               </a>
             
           </div>
@@ -500,8 +394,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/20/(2)原型及原型链/" rel="prev" title="(2)原型及原型链">
-                (2)原型及原型链 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/27/(9)储存/" rel="prev" title="（9）储存">
+                （9）储存 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -629,7 +523,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、拿到一个面试题，你第一时间看到的是什么？"><span class="nav-number">1.</span> <span class="nav-text">一、拿到一个面试题，你第一时间看到的是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、又如何看待网上搜出来的永远看不完的题海？"><span class="nav-number">2.</span> <span class="nav-text">二、又如何看待网上搜出来的永远看不完的题海？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、如何对待接下来遇到的问题？"><span class="nav-number">3.</span> <span class="nav-text">三、如何对待接下来遇到的问题？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实际题目"><span class="nav-number">3.1.</span> <span class="nav-text">实际题目</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#面试的题目"><span class="nav-number">1.</span> <span class="nav-text">面试的题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#考察的知识点"><span class="nav-number">2.</span> <span class="nav-text">考察的知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-XMLHttpRequestajax-的核心-API"><span class="nav-number">2.0.1.</span> <span class="nav-text">1: XMLHttpRequestajax 的核心 API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-状态码说明"><span class="nav-number">2.0.2.</span> <span class="nav-text">2: 状态码说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-跨域"><span class="nav-number">2.0.3.</span> <span class="nav-text">3: 跨域</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
