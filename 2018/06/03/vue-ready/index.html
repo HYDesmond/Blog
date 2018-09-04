@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vue," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="什么是forEach 、for in、 for of？这里我们先看看这三个方法，都具有遍历的作用，forEach是ES5中操作数组的一种方法，主要功能是遍历数组，而具体的细节通过以下例子进行说明： 12345678910111213141516171819&amp;lt;script&amp;gt;	var arr = [1, 2, 3, 4];	arr.forEach(function(item) &amp;#123;">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue学前笔记">
+<meta property="og:url" content="https://hydesmond.github.io/desmond.github.io/2018/06/03/vue-ready/index.html">
+<meta property="og:site_name" content="Desmond">
+<meta property="og:description" content="什么是forEach 、for in、 for of？这里我们先看看这三个方法，都具有遍历的作用，forEach是ES5中操作数组的一种方法，主要功能是遍历数组，而具体的细节通过以下例子进行说明： 12345678910111213141516171819&amp;lt;script&amp;gt;	var arr = [1, 2, 3, 4];	arr.forEach(function(item) &amp;#123;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-04T04:29:18.673Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue学前笔记">
+<meta name="twitter:description" content="什么是forEach 、for in、 for of？这里我们先看看这三个方法，都具有遍历的作用，forEach是ES5中操作数组的一种方法，主要功能是遍历数组，而具体的细节通过以下例子进行说明： 12345678910111213141516171819&amp;lt;script&amp;gt;	var arr = [1, 2, 3, 4];	arr.forEach(function(item) &amp;#123;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hydesmond.github.io/desmond.github.io/2018/06/03/vue-ready/"/>
+
+
+
+
+
+  <title>vue学前笔记 | Desmond</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Desmond</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一响贪欢</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hydesmond.github.io/desmond.github.io/2018/06/03/vue-ready/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Desmond">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Desmond">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue学前笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-03T13:25:24+08:00">
+                2018-06-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="什么是forEach-、for-in、-for-of？"><a href="#什么是forEach-、for-in、-for-of？" class="headerlink" title="什么是forEach 、for in、 for of？"></a>什么是forEach 、for in、 for of？</h2><p>这里我们先看看这三个方法，都具有遍历的作用，forEach是ES5中操作数组的一种方法，主要功能是遍历数组，而具体的细节通过以下例子进行说明：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line">	arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123; <span class="comment">//没有return</span></span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">typeof</span>(item));</span><br><span class="line">	&#125;)</span><br><span class="line">	arr.b = <span class="string">'ok'</span>;</span><br><span class="line">	<span class="keyword">for</span> (key <span class="keyword">in</span> arr) &#123; <span class="comment">//返回的string对象</span></span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">typeof</span>(key))</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">var</span> obj =&#123;</span><br><span class="line">		school: <span class="string">'gdou'</span>,</span><br><span class="line">		age: <span class="number">8</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> val <span class="keyword">of</span> <span class="built_in">Object</span>.keys(obj)) &#123; <span class="comment">//支持return 并且是值of数组（不能遍历对象）</span></span><br><span class="line">		<span class="built_in">console</span>.log(obj[val])</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如上，<br>1、<code>forEach</code> 没有 <code>return</code><br>2、<code>for in</code> 能返回arr的属性，且返回的是 <code>string</code> 类型的<br>3、<code>for of</code> 不能遍历对象，如果需要遍历对象，通过 <code>Object.keys</code>,且需要返回obj的方法，即 <code>obj[val]</code></p>
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><ul>
+<li><code>filter</code> 正如其名，就是过滤的，一如既往，来个例子：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">let newArr = [1, 2, 3, 4, 5].filter(function (item) &#123;</span><br><span class="line">	retrun item &gt;= 2 &amp;&amp; item &lt;= 5;</span><br><span class="line">&#125;);</span><br><span class="line">consolo.log(newArr);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>简单说说，上面的例子，我们主要是想获取数组里大于等于2且小于等于5的数，只有 <code>true</code> 才通过过滤，也就是我们所期望的值</li>
+</ul>
+<ul>
+<li><strong>需要注意</strong>的是，这里的写法，不能写为 <code>2&lt;=item&lt;=5</code> 。简单解释下，如果写为 <code>2&lt;=item&lt;=5</code> ，代码先进行 <code>2&lt;=item</code> 这样返回是一个布尔值，那么布尔值是不会大于1的，所以接下来 <code>2&lt;=item</code> &lt;=5肯定返回 <code>true</code>。</li>
+</ul>
+<h2 id="map-映射-将原有的数组映射成一个新数组"><a href="#map-映射-将原有的数组映射成一个新数组" class="headerlink" title="map 映射 将原有的数组映射成一个新数组"></a>map 映射 将原有的数组映射成一个新数组</h2><ul>
+<li>同样，我们通过例子走一遍 </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">let arr = [1, 2, 3].map(function (item) &#123;</span><br><span class="line">	return `&lt;li&gt;$&#123;item&#125;&lt;/li&gt;` //  ``是es6模板字符串，用$&#123;&#125;获取值</span><br><span class="line">&#125;)</span><br><span class="line">cosole.log(arr)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="some-every-includes-find"><a href="#some-every-includes-find" class="headerlink" title="some every includes find"></a>some every includes find</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">let arr = [1, 2, 3, 4, 5];</span><br><span class="line">console.log(arr.includes(5));</span><br><span class="line">let result = arr.find(function (item, index) &#123;</span><br><span class="line">	return item.toString().indexOf(5) &gt; -1;</span><br><span class="line">&#125;)</span><br><span class="line">let result2 = arr.some(function (item, index) &#123;</span><br><span class="line">	return item.toString().indexOf(5) &gt; -1;</span><br><span class="line">&#125;)</span><br><span class="line">let result3 = arr.every(function (item, index) &#123;</span><br><span class="line">	return item.toString().indexOf(5) &gt; -1;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上面的例子中，都是查找是否含有‘5’</li>
+<li>通过上面的例子，可以发现都是有‘查找’的功能，特点如下：</li>
+</ul>
+<ul>
+<li>1、<code>includes</code>，返回 <code>boolean</code>，即找到返回 <code>true</code> ，没有找到返回<code>false</code></li>
+<li>2、<code>find</code>，当找到的值，停止循环，并将值返回</li>
+<li>3、<code>some</code>，找 <code>true</code>，找到 <code>true</code> 后停止 返回 <code>true</code> 找不到返回<code>false</code></li>
+<li>4、<code>every</code>，找 <code>false</code>，找到 <code>false</code> 后停止，返回 <code>false</code></li>
+</ul>
+<h2 id="reduce-返回的是叠加后的结果-原数组不发生变化，-回调函数返回的结果"><a href="#reduce-返回的是叠加后的结果-原数组不发生变化，-回调函数返回的结果" class="headerlink" title="reduce 返回的是叠加后的结果  原数组不发生变化， 回调函数返回的结果"></a>reduce 返回的是叠加后的结果  原数组不发生变化， 回调函数返回的结果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">[1, 2, 3, 4, 5].reduce(function (prev, next, index, item) &#123;</span><br><span class="line">	console.log(prev, next, index, item);</span><br><span class="line">&#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>ok，看看结果返回的结果</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 2 1 [1, 2, 3, 4, 5]</span><br><span class="line">undefined 3 2 [1, 2, 3, 4, 5]</span><br><span class="line">undefined 4 3 [1, 2, 3, 4, 5]</span><br><span class="line">undefined 5 4 [1, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从结果来看，是输出了四次，那么这四次都代表了什么呢？</li>
+<li>先看第一次输出结果，分别为1 2 1 [1, 2, 3, 4, 5]。对应我们的形参（<code>prev</code>，<code>next</code>，<code>index</code>，<code>item</code>）。</li>
+<li>第一次， <code>prev</code> 为1，<code>next</code> 为2，<code>index</code> 为1， <code>item</code> 为[1, 2, 3, 4, 5]</li>
+<li>不难看出，<code>next</code> 其实是执行了1次，指向数组第二项，<code>index</code> 为 <code>next</code> 的下标，<code>item</code> 为数组</li>
+<li><p>所以第二次， <code>next</code> 执行两次，指向数组第二项， <code>index</code> 为 <code>next</code> 的下标， <code>item</code> 为数组</p>
+</li>
+<li><p><strong>但是为什么 <code>prev</code> 第一次有值，以后都没有值了呢？</strong> 再看看下面的例子:</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">[1, 2, 3, 4, 5].reduce(function(prev, next, index, item) &#123;</span><br><span class="line">		console.log(prev, next);</span><br><span class="line">		return 100;</span><br><span class="line">	&#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出结果如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 2 1 [1, 2, 3, 4, 5]</span><br><span class="line">100 3 2 [1, 2, 3, 4, 5]</span><br><span class="line">100 4 3 [1, 2, 3, 4, 5]</span><br><span class="line">100 5 4 [1, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过例子，可以看出，<code>prev</code> 除了第一次执行，都为我们 <code>return</code> 的100，也就是说返回值作为了下一次的 <code>prev</code> 。通过这一特性可以进行累加，具体如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">	let sum = [1, 2, 3, 4, 5].reduce(function (prev, next, index, item) &#123;</span><br><span class="line">		console.log(prev, next);</span><br><span class="line">		return prev + next;</span><br><span class="line">	&#125;)</span><br><span class="line">	console.log(sum);</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>下面继续加深对 <code>reduce</code> 的应用，如果我要对一个复杂的对象进行操作呢？</li>
+</ul>
+<ul>
+<li>来个实例<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	let sum2 = [&#123;price:30, count:2&#125;,&#123;price:30, count:3&#125;,&#123;price:30, count:4&#125;].reduce(function (prev, next) &#123;</span><br><span class="line">		console.log(prev, next);</span><br><span class="line">		return prev.price * prev.count + next.price * next.count;</span><br><span class="line">	&#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>上面的例子，感觉上是不存在问题的，现在再回来看看 <code>return</code> 的将作为下一次的 <code>prev</code> ,第一次结果是30<em>2 + 30</em>3 = 150；话不多说，看看结果:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;price：30，count: 2&#125; &#123;prcie: 30, count: 3&#125;</span><br><span class="line">150 &#123;price: 30, count: 4&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>嗯哼，倪端暴露出来了。既然 <code>prev</code> 变成了150，那也就没有 <code>price</code> 跟 <code>count</code> 的属性了，那就无法继续执行了。</li>
+</ul>
+<ul>
+<li><strong>一种比较好的写法</strong>如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">let sum =  [&#123;price:30, count:2&#125;,&#123;price:30, count:3&#125;,&#123;price:30, count:4&#125;].reduce(function (prev, next) &#123;</span><br><span class="line">		console.log(prev, next);</span><br><span class="line">		return prev + next.price * next.count;</span><br><span class="line">	&#125;, 0)//默认指定第一次的prev为0</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>这样就没有什么问题了。接下来，将 <code>reduce</code> 应用到二维数组转为一维数组</p>
+<p>[[1,2,3],[4,5,6],[7,8,9]].reduce(function(prev, next) {<br>    return prev.concat(next);<br>}) </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/15/面试题/" rel="prev" title="面试题之一">
+                面试题之一 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.png"
+                alt="Desmond" />
+            
+              <p class="site-author-name" itemprop="name">Desmond</p>
+              <p class="site-description motion-element" itemprop="description">关于前端与设计、灵魂写手 | Desmond，Web & Mobile Lover | 这里是 @Desmond李波 的个人博客。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HYDesmond" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是forEach-、for-in、-for-of？"><span class="nav-number">1.</span> <span class="nav-text">什么是forEach 、for in、 for of？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filter"><span class="nav-number">2.</span> <span class="nav-text">filter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#map-映射-将原有的数组映射成一个新数组"><span class="nav-number">3.</span> <span class="nav-text">map 映射 将原有的数组映射成一个新数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#some-every-includes-find"><span class="nav-number">4.</span> <span class="nav-text">some every includes find</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reduce-返回的是叠加后的结果-原数组不发生变化，-回调函数返回的结果"><span class="nav-number">5.</span> <span class="nav-text">reduce 返回的是叠加后的结果  原数组不发生变化， 回调函数返回的结果</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Desmond</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
