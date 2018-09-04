@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="面试题,杂谈," />
+  <meta name="keywords" content="面试题," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1、在prototype编写一个sum（）函数，要求将数组的number类型值进行相加并返回 第一种写法 1234567891011121314151617Array.prototype.sum = function sum() &amp;#123;                     var result = 0;            for (var i = 0; i &amp;lt; this.len">
-<meta name="keywords" content="面试题,杂谈">
+<meta name="description" content="1、在prototype编写一个sum（）函数，要求将数组的number类型值进行相加并返回实现方法一：1234567891011121314151617Array.prototype.sum = function sum() &amp;#123;                     var result = 0;            for (var i = 0; i &amp;lt; this.leng">
+<meta name="keywords" content="面试题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试题之一">
 <meta property="og:url" content="https://hydesmond.github.io/desmond.github.io/2018/07/15/面试题/index.html">
 <meta property="og:site_name" content="Desmond">
-<meta property="og:description" content="1、在prototype编写一个sum（）函数，要求将数组的number类型值进行相加并返回 第一种写法 1234567891011121314151617Array.prototype.sum = function sum() &amp;#123;                     var result = 0;            for (var i = 0; i &amp;lt; this.len">
+<meta property="og:description" content="1、在prototype编写一个sum（）函数，要求将数组的number类型值进行相加并返回实现方法一：1234567891011121314151617Array.prototype.sum = function sum() &amp;#123;                     var result = 0;            for (var i = 0; i &amp;lt; this.leng">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-02T00:52:08.892Z">
+<meta property="og:updated_time" content="2018-09-04T03:11:53.166Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试题之一">
-<meta name="twitter:description" content="1、在prototype编写一个sum（）函数，要求将数组的number类型值进行相加并返回 第一种写法 1234567891011121314151617Array.prototype.sum = function sum() &amp;#123;                     var result = 0;            for (var i = 0; i &amp;lt; this.len">
+<meta name="twitter:description" content="1、在prototype编写一个sum（）函数，要求将数组的number类型值进行相加并返回实现方法一：1234567891011121314151617Array.prototype.sum = function sum() &amp;#123;                     var result = 0;            for (var i = 0; i &amp;lt; this.leng">
 
 
 
@@ -201,12 +201,32 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -283,6 +303,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">面试题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -310,29 +352,14 @@
       
 
       
-        <h3 id="1、在prototype编写一个sum（）函数，要求将数组的number类型值进行相加并返回"><a href="#1、在prototype编写一个sum（）函数，要求将数组的number类型值进行相加并返回" class="headerlink" title="1、在prototype编写一个sum（）函数，要求将数组的number类型值进行相加并返回"></a>1、在prototype编写一个sum（）函数，要求将数组的number类型值进行相加并返回</h3><ul>
-<li><p>第一种写法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.sum = function sum() &#123;</span><br><span class="line">         </span><br><span class="line">            var result = 0;</span><br><span class="line">            for (var i = 0; i &lt; this.length; i++) &#123;</span><br><span class="line">                if (typeof this[i] !== &quot;number&quot;) &#123;</span><br><span class="line">                    this[i] = this[this.length - 1];</span><br><span class="line">                    this.length--;</span><br><span class="line">                    i--;</span><br><span class="line">                    continue;</span><br><span class="line">                &#125;</span><br><span class="line">                result += this[i];</span><br><span class="line">            &#125;</span><br><span class="line">            return result;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        var arr = [&quot;2&quot;, 22, &quot;qwe&quot;, 3];</span><br><span class="line">        console.log(arr.sum())</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>第二中写法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.sum = function sum() &#123;</span><br><span class="line">        return this.filter(function(item)&#123;</span><br><span class="line">            return typeof item == &quot;number&quot;</span><br><span class="line">            &#125;).reduce(function(prev,next)&#123;</span><br><span class="line">                return prev + next</span><br><span class="line">            &#125;,0)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="2、将数组-1-2-3-4-5-转为-1-2-3-4-5"><a href="#2、将数组-1-2-3-4-5-转为-1-2-3-4-5" class="headerlink" title="2、将数组[1,[2],[[3,4],5]]转为[1,2,3,4,5]"></a>2、将数组[1,[2],[[3,4],5]]转为[1,2,3,4,5]</h3><ul>
-<li><p>实现如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr1 = [1, [2], [[3, 4], 5]];</span><br><span class="line">arr1 = arr1.join().split(&quot;,&quot;)</span><br><span class="line">console.log(arr1);//[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>有缺点，转为的是字符串，稍加修改</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr1 = [1, [2], [[3, 4], 5]];</span><br><span class="line">    arr1 = arr1.join().split(&quot;,&quot;);</span><br><span class="line">    arr1 = arr1.map( (item)=&gt; Number(item) )</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="3、编写一个函数bindAdd，要求实现下列需求"><a href="#3、编写一个函数bindAdd，要求实现下列需求" class="headerlink" title="3、编写一个函数bindAdd，要求实现下列需求"></a>3、编写一个函数bindAdd，要求实现下列需求</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// function f(a, b) &#123;</span><br><span class="line">//     return a + b;</span><br><span class="line">// &#125;</span><br><span class="line">// console.log(f.bindAdd(1,2)(3))  //说明，f只是参考，要求任意函数都可以实现，即依旧执行函数f（或者其他定义的函数），以例子来说，当f.bindAdd(1,2)(3)，因为传了3，替代（1,2）中的1,。</span><br></pre></td></tr></table></figure>
-<ul>
-<li>写法如下<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.bindAdd = function bindAdd() &#123;</span><br><span class="line">            var arr = Array.prototype.slice.call(arguments);</span><br><span class="line">            </span><br><span class="line">            var _this = this;</span><br><span class="line">            return function() &#123;</span><br><span class="line">                if(arguments.length&gt;0) &#123;</span><br><span class="line">                    for(var i=0;i&lt;arguments.length;i++) &#123;</span><br><span class="line">                        arr[i] = arguments[i];</span><br><span class="line">                    &#125;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                console.log(arr)</span><br><span class="line">                return _this.apply(_this,arr);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        function f(a,b) &#123;</span><br><span class="line">            return a+b;</span><br><span class="line">        &#125;</span><br><span class="line">        console.log(f.bindAdd(1,2));//3</span><br><span class="line">        console.log(f.bindAdd(1,2)(3));//5</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="4、编写数组去重"><a href="#4、编写数组去重" class="headerlink" title="4、编写数组去重"></a>4、编写数组去重</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.Distinct = function Distinct() &#123;</span><br><span class="line">            var obj = &#123;&#125;</span><br><span class="line">            for(var i = 0;i&lt;this.length;i++) &#123;</span><br><span class="line">                var cur = this[i]</span><br><span class="line">                if(typeof obj[cur] !== &quot;undefined&quot;) &#123;</span><br><span class="line">                    this[i] = this[this.length-1];</span><br><span class="line">                    this.length--;</span><br><span class="line">                    i--;</span><br><span class="line">                    continue;</span><br><span class="line">                &#125;</span><br><span class="line">                obj[cur] = cur;</span><br><span class="line">            &#125;</span><br><span class="line">            obj = null;</span><br><span class="line">            return this</span><br><span class="line">        &#125;</span><br><span class="line">        var arr = [1,22,22,1,1,2,1,2,1,3];</span><br></pre></td></tr></table></figure>
-<h3 id="5、分别写出冒泡、快速、插入"><a href="#5、分别写出冒泡、快速、插入" class="headerlink" title="5、分别写出冒泡、快速、插入"></a>5、分别写出冒泡、快速、插入</h3><ul>
+        <h1 id="1、在prototype编写一个sum（）函数，要求将数组的number类型值进行相加并返回"><a href="#1、在prototype编写一个sum（）函数，要求将数组的number类型值进行相加并返回" class="headerlink" title="1、在prototype编写一个sum（）函数，要求将数组的number类型值进行相加并返回"></a>1、在prototype编写一个sum（）函数，要求将数组的number类型值进行相加并返回</h1><h2 id="实现方法一："><a href="#实现方法一：" class="headerlink" title="实现方法一："></a>实现方法一：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.sum = <span class="keyword">function</span> <span class="function"><span class="title">sum</span></span>() &#123;</span><br><span class="line">         </span><br><span class="line">            var result = 0;</span><br><span class="line">            <span class="keyword">for</span> (var i = 0; i &lt; this.length; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (typeof this[i] !== <span class="string">"number"</span>) &#123;</span><br><span class="line">                    this[i] = this[this.length - 1];</span><br><span class="line">                    this.length--;</span><br><span class="line">                    i--;</span><br><span class="line">                    <span class="built_in">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                result += this[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> result;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        var arr = [<span class="string">"2"</span>, 22, <span class="string">"qwe"</span>, 3];</span><br><span class="line">        console.log(arr.sum())</span><br></pre></td></tr></table></figure>
+<h2 id="实现方法二"><a href="#实现方法二" class="headerlink" title="实现方法二"></a>实现方法二</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.sum = function sum() &#123;</span><br><span class="line">        return this.filter(function(item)&#123;</span><br><span class="line">            return typeof item == &quot;number&quot;</span><br><span class="line">            &#125;).reduce(function(prev,next)&#123;</span><br><span class="line">                return prev + next</span><br><span class="line">            &#125;,0)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="2、将数组-1-2-3-4-5-转为-1-2-3-4-5"><a href="#2、将数组-1-2-3-4-5-转为-1-2-3-4-5" class="headerlink" title="2、将数组[1,[2],[[3,4],5]]转为[1,2,3,4,5]"></a>2、将数组[1,[2],[[3,4],5]]转为[1,2,3,4,5]</h1><h2 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr1 = [1, [2], [[3, 4], 5]];</span><br><span class="line">arr1 = arr1.join().split(&quot;,&quot;)</span><br><span class="line">console.log(arr1);//[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]</span><br></pre></td></tr></table></figure>
+<h2 id="上述方法有缺点，转为的是字符串，稍加修改"><a href="#上述方法有缺点，转为的是字符串，稍加修改" class="headerlink" title="上述方法有缺点，转为的是字符串，稍加修改"></a>上述方法有缺点，转为的是字符串，稍加修改</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr1 = [1, [2], [[3, 4], 5]];</span><br><span class="line">    arr1 = arr1.join().split(&quot;,&quot;);</span><br><span class="line">    arr1 = arr1.map( (item)=&gt; Number(item) )</span><br></pre></td></tr></table></figure>
+<h1 id="3、编写一个函数bindAdd，要求实现下列需求"><a href="#3、编写一个函数bindAdd，要求实现下列需求" class="headerlink" title="3、编写一个函数bindAdd，要求实现下列需求"></a>3、编写一个函数bindAdd，要求实现下列需求</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// function f(a, b) &#123;</span><br><span class="line">//     return a + b;</span><br><span class="line">// &#125;</span><br><span class="line">// console.log(f.bindAdd(1,2)(3))  //说明，f只是参考，要求任意函数都可以实现，即依旧执行函数f（或者其他定义的函数），以例子来说，当f.bindAdd(1,2)(3)，因为传了3，替代（1,2）中的1,。</span><br></pre></td></tr></table></figure>
+<h2 id="写法如下"><a href="#写法如下" class="headerlink" title="写法如下"></a>写法如下</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.bindAdd = function bindAdd() &#123;</span><br><span class="line">            var arr = Array.prototype.slice.call(arguments);</span><br><span class="line">            </span><br><span class="line">            var _this = this;</span><br><span class="line">            return function() &#123;</span><br><span class="line">                if(arguments.length&gt;0) &#123;</span><br><span class="line">                    for(var i=0;i&lt;arguments.length;i++) &#123;</span><br><span class="line">                        arr[i] = arguments[i];</span><br><span class="line">                    &#125;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                console.log(arr)</span><br><span class="line">                return _this.apply(_this,arr);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        function f(a,b) &#123;</span><br><span class="line">            return a+b;</span><br><span class="line">        &#125;</span><br><span class="line">        console.log(f.bindAdd(1,2));//3</span><br><span class="line">        console.log(f.bindAdd(1,2)(3));//5</span><br></pre></td></tr></table></figure>
+<h1 id="4、编写数组去重"><a href="#4、编写数组去重" class="headerlink" title="4、编写数组去重"></a>4、编写数组去重</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.Distinct = function Distinct() &#123;</span><br><span class="line">            var obj = &#123;&#125;</span><br><span class="line">            for(var i = 0;i&lt;this.length;i++) &#123;</span><br><span class="line">                var cur = this[i]</span><br><span class="line">                if(typeof obj[cur] !== &quot;undefined&quot;) &#123;</span><br><span class="line">                    this[i] = this[this.length-1];</span><br><span class="line">                    this.length--;</span><br><span class="line">                    i--;</span><br><span class="line">                    continue;</span><br><span class="line">                &#125;</span><br><span class="line">                obj[cur] = cur;</span><br><span class="line">            &#125;</span><br><span class="line">            obj = null;</span><br><span class="line">            return this</span><br><span class="line">        &#125;</span><br><span class="line">        var arr = [1,22,22,1,1,2,1,2,1,3];</span><br></pre></td></tr></table></figure>
+<h1 id="5、分别写出冒泡、快速、插入"><a href="#5、分别写出冒泡、快速、插入" class="headerlink" title="5、分别写出冒泡、快速、插入"></a>5、分别写出冒泡、快速、插入</h1><ul>
 <li><p>bubble</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function bubble(ary) &#123;</span><br><span class="line">			</span><br><span class="line">			for (var i = 0; i &lt; ary.length - 1; i++) &#123;</span><br><span class="line">				for (var j = 0; j &lt; ary.length - 1 - i; j++) &#123;</span><br><span class="line">					if (ary[j] &gt; ary[j + 1]) &#123;</span><br><span class="line">						var temp = ary[j];</span><br><span class="line">						ary[j] = ary[j + 1];</span><br><span class="line">						ary[j + 1] = temp;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			return ary</span><br><span class="line">		&#125;</span><br><span class="line">		console.log(bubble([2, 3, 1, 11, 21, 22, 9, 8, 5, 14, 41, 44]))</span><br></pre></td></tr></table></figure>
 </li>
@@ -343,8 +370,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function insert(ary) &#123;</span><br><span class="line">			var handAry = [];</span><br><span class="line">			handAry.push(ary[0]);</span><br><span class="line">			for (var i = 1; i &lt; ary.length; i++) &#123;</span><br><span class="line">				var cur = ary[i];</span><br><span class="line">				for (var j = handAry.length - 1; j &gt;= 0; j--) &#123;</span><br><span class="line">					if (cur &gt; handAry[j]) &#123;</span><br><span class="line">						handAry.splice(j + 1, 0, cur);</span><br><span class="line">						break;</span><br><span class="line">					&#125;</span><br><span class="line">					if (j === 0) &#123;</span><br><span class="line">						handAry.unshift(cur)</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			return handAry</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		console.log(insert([5, 2, 3, 1, 10]))</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>5、有以下代码，①要求检查是否为合法闭合元素，如str、str2为正确（忽略大小写),str3、str4为不正确；②将元素最外层的元素替换成div<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">let str = `&lt;p&gt;</span><br><span class="line">    &lt;div&gt;123&lt;/div&gt;</span><br><span class="line">    &lt;span&gt;222&lt;/span&gt;</span><br><span class="line">&lt;/p&gt;`</span><br><span class="line"></span><br><span class="line">let str2 = `&lt;p class=&quot;hello&quot;</span><br><span class="line">&gt;</span><br><span class="line">    &lt;div&gt;123&lt;/div&gt;</span><br><span class="line">    &lt;span&gt;222&lt;/span&gt;</span><br><span class="line">&lt;/P&gt;`</span><br><span class="line"></span><br><span class="line">let str3 = `&lt;pclass=&quot;hello&quot;&gt;</span><br><span class="line">    &lt;div&gt;123&lt;/div&gt;</span><br><span class="line">    &lt;span&gt;222&lt;/span&gt;</span><br><span class="line">&lt;/p&gt;`</span><br><span class="line"></span><br><span class="line">let str4 = `&lt;p&gt;</span><br><span class="line">    &lt;div&gt;123&lt;/div&gt;</span><br><span class="line">    &lt;span&gt;222&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;`</span><br></pre></td></tr></table></figure></p>
-
+<h1 id="6、有以下代码，①要求检查是否为合法闭合元素，如str、str2为正确（忽略大小写-str3、str4为不正确；②将元素最外层的元素替换成div"><a href="#6、有以下代码，①要求检查是否为合法闭合元素，如str、str2为正确（忽略大小写-str3、str4为不正确；②将元素最外层的元素替换成div" class="headerlink" title="6、有以下代码，①要求检查是否为合法闭合元素，如str、str2为正确（忽略大小写),str3、str4为不正确；②将元素最外层的元素替换成div"></a>6、有以下代码，①要求检查是否为合法闭合元素，如str、str2为正确（忽略大小写),str3、str4为不正确；②将元素最外层的元素替换成div</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">let str = `&lt;p&gt;</span><br><span class="line">    &lt;div&gt;123&lt;/div&gt;</span><br><span class="line">    &lt;span&gt;222&lt;/span&gt;</span><br><span class="line">&lt;/p&gt;`</span><br><span class="line"></span><br><span class="line">let str2 = `&lt;p class=&quot;hello&quot;</span><br><span class="line">&gt;</span><br><span class="line">    &lt;div&gt;123&lt;/div&gt;</span><br><span class="line">    &lt;span&gt;222&lt;/span&gt;</span><br><span class="line">&lt;/P&gt;`</span><br><span class="line"></span><br><span class="line">let str3 = `&lt;pclass=&quot;hello&quot;&gt;</span><br><span class="line">    &lt;div&gt;123&lt;/div&gt;</span><br><span class="line">    &lt;span&gt;222&lt;/span&gt;</span><br><span class="line">&lt;/p&gt;`</span><br><span class="line"></span><br><span class="line">let str4 = `&lt;p&gt;</span><br><span class="line">    &lt;div&gt;123&lt;/div&gt;</span><br><span class="line">    &lt;span&gt;222&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;`</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -362,8 +388,6 @@
         <div class="post-tags">
           
             <a href="/tags/面试题/" rel="tag"># 面试题</a>
-          
-            <a href="/tags/杂谈/" rel="tag"># 杂谈</a>
           
         </div>
       
@@ -475,10 +499,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
-                  <span class="site-state-item-count">1</span>
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
-                
+                </a>
               </div>
             
 
@@ -486,10 +510,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">4</span>
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
-                
+                </a>
               </div>
             
 
@@ -497,6 +521,16 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HYDesmond" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -520,7 +554,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、在prototype编写一个sum（）函数，要求将数组的number类型值进行相加并返回"><span class="nav-number">1.</span> <span class="nav-text">1、在prototype编写一个sum（）函数，要求将数组的number类型值进行相加并返回</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、将数组-1-2-3-4-5-转为-1-2-3-4-5"><span class="nav-number">2.</span> <span class="nav-text">2、将数组[1,[2],[[3,4],5]]转为[1,2,3,4,5]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、编写一个函数bindAdd，要求实现下列需求"><span class="nav-number">3.</span> <span class="nav-text">3、编写一个函数bindAdd，要求实现下列需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、编写数组去重"><span class="nav-number">4.</span> <span class="nav-text">4、编写数组去重</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、分别写出冒泡、快速、插入"><span class="nav-number">5.</span> <span class="nav-text">5、分别写出冒泡、快速、插入</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、在prototype编写一个sum（）函数，要求将数组的number类型值进行相加并返回"><span class="nav-number">1.</span> <span class="nav-text">1、在prototype编写一个sum（）函数，要求将数组的number类型值进行相加并返回</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现方法一："><span class="nav-number">1.1.</span> <span class="nav-text">实现方法一：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现方法二"><span class="nav-number">1.2.</span> <span class="nav-text">实现方法二</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、将数组-1-2-3-4-5-转为-1-2-3-4-5"><span class="nav-number">2.</span> <span class="nav-text">2、将数组[1,[2],[[3,4],5]]转为[1,2,3,4,5]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现方法"><span class="nav-number">2.1.</span> <span class="nav-text">实现方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上述方法有缺点，转为的是字符串，稍加修改"><span class="nav-number">2.2.</span> <span class="nav-text">上述方法有缺点，转为的是字符串，稍加修改</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、编写一个函数bindAdd，要求实现下列需求"><span class="nav-number">3.</span> <span class="nav-text">3、编写一个函数bindAdd，要求实现下列需求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#写法如下"><span class="nav-number">3.1.</span> <span class="nav-text">写法如下</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4、编写数组去重"><span class="nav-number">4.</span> <span class="nav-text">4、编写数组去重</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5、分别写出冒泡、快速、插入"><span class="nav-number">5.</span> <span class="nav-text">5、分别写出冒泡、快速、插入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6、有以下代码，①要求检查是否为合法闭合元素，如str、str2为正确（忽略大小写-str3、str4为不正确；②将元素最外层的元素替换成div"><span class="nav-number">6.</span> <span class="nav-text">6、有以下代码，①要求检查是否为合法闭合元素，如str、str2为正确（忽略大小写),str3、str4为不正确；②将元素最外层的元素替换成div</span></a></li></ol></div>
             
 
           </div>
